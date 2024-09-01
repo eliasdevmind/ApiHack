@@ -7,7 +7,7 @@ from typing import Optional, List
 from dotenv import load_dotenv
 import os
 
-# Carregar variáveis de ambiente
+# Carregar variáveis de ambiente do arquivo .env
 load_dotenv()
 
 # Defina a URL do banco de dados diretamente a partir da variável de ambiente
