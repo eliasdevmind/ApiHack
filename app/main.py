@@ -7,15 +7,15 @@ from typing import Optional, List
 from dotenv import load_dotenv
 import os
 
-# Carregar variáveis de ambiente do arquivo .env
+# Carregar variáveis de ambiente
 load_dotenv()
 
-# Defina a URL do banco de dados diretamente a partir da variável de ambiente
+# Defina a URL do banco de dados e chave secreta a partir das variáveis de ambiente
 DATABASE_URL = os.getenv("DATABASE_URL")
-SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 if not all([DATABASE_URL, SECRET_KEY]):
-    raise ValueError("Por favor, defina todas as variáveis de ambiente: DATABASE_URL e JWT_SECRET_KEY")
+    raise ValueError("Por favor, defina todas as variáveis de ambiente: DATABASE_URL e SECRET_KEY")
 
 # Configuração do banco de dados
 engine = create_engine(DATABASE_URL)
@@ -156,5 +156,5 @@ def read_cursos(
 # Executar a aplicação FastAPI
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 8080))
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)
